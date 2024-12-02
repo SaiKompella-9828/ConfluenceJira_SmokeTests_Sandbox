@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 145.117 s <<< FAILURE! - in TestSuite
+runScenario(cucumberOptions.TestNGTestRunner)  Time elapsed: 141.09 s  <<< FAILURE!
+java.lang.AssertionError: expected [A page with the title 'Testing Edit Page FUnctionality in Confluence_001' already exists in this space. Enter a different title for your page.] but found [A new page you were adding on Aug 10, 2024 called ‘Copy of Atlassian Vul 1 Smoke ....... Vulnerability’ was saved as a draft. Do you want to resume editing or discard it?]
+
