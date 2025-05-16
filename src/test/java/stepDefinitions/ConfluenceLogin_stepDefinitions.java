@@ -1,17 +1,11 @@
 package stepDefinitions;
 
-import java.time.Duration;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.LoginPage;
-import pageObjects.SearchFunctionalityClick;
 import pageObjects.PageObjectManager;
 import utils.TestContextSetup;
 

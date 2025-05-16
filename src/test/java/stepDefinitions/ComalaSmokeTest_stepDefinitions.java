@@ -22,14 +22,11 @@ public class ComalaSmokeTest_stepDefinitions {
 		ComalaObject=testContextSetup.pageObjectManager.getComalaObjects();
 	}
 	
-	
+
 	@Then("User Checks all Comala Related Functionality")
 	public void user_checks_all_comala_related_functionality() throws InterruptedException, AWTException {
-		ComalaObject.internalArticles();
-		ComalaObject.JiraAssignmentGroup();
-		//ComalaObject.Jira_Confluence();
-		Thread.sleep(2000);
-		ComalaObject.Sandbox_Testing();
+		//ComalaObject.Differentiation();
+		//Thread.sleep(2000);
 		ComalaObject.ComalaPageCreation();
 		ComalaObject.ComalaPageEdit();
 		ComalaObject.AttachmentCode();

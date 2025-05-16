@@ -2,16 +2,12 @@ package stepDefinitions;
 
 import java.awt.AWTException;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import pageObjects.AtlassianObjects;
-import pageObjects.LoginPage;
-import pageObjects.SearchFunctionalityClick;
 import pageObjects.PageObjectManager;
+import pageObjects.SearchFunctionalityClick;
 import utils.TestContextSetup;
 
 public class AtlassianSmokeTest_stepDefinitions {
@@ -21,6 +17,7 @@ public class AtlassianSmokeTest_stepDefinitions {
 	public SearchFunctionalityClick SearchFunctionality;
 	public AtlassianObjects AtlassianObject;
 	public WebDriver driver;
+
 	public AtlassianSmokeTest_stepDefinitions(TestContextSetup testContextSetup) {
 		this.testContextSetup=testContextSetup;
 		SearchFunctionality=testContextSetup.pageObjectManager.getSearchClick();
@@ -36,13 +33,10 @@ public class AtlassianSmokeTest_stepDefinitions {
 
 	@Then("User Checks all Atlassian Related Functionality")
 	public void AtlassianSmoke() throws InterruptedException {
-		AtlassianObject.internalArticles();
-		AtlassianObject.JiraAssignmentGroup();
-		//AtlassianObject.Jira_Confluence();
+		AtlassianObject.Differentiation();
 		Thread.sleep(2000);
-		AtlassianObject.Sandbox_Testing();
 		AtlassianObject.PlusSign();
-		Thread.sleep(6000);
+		Thread.sleep(10000);
 		AtlassianObject.ShowMore();
 		Thread.sleep(6000);
 		AtlassianObject.BlankPage();
@@ -50,24 +44,35 @@ public class AtlassianSmokeTest_stepDefinitions {
 		AtlassianObject.CreatePage();
 		System.out.println("Atlassian Page Created");
 	}
-	public void newPage() {
-		
+	public void newPage() throws InterruptedException {
+
 		AtlassianObject.PlusSign();
+		Thread.sleep(3000);
 		AtlassianObject.ShowMore();
+		Thread.sleep(3000);
 		AtlassianObject.BlankPage();
+		Thread.sleep(3000);
 		AtlassianObject.CreatePage();
+		Thread.sleep(3000);
 	}
 	@Then("User should be able to perform Page Updates")
 	public void AtlassianSmoke_AfterPageCreation() throws InterruptedException, AWTException {
 		AtlassianObject.PageUpdates();
 		Thread.sleep(3000);
 		AtlassianObject.ThreeDotsIcon();
+		Thread.sleep(3000);
 		AtlassianObject.AttachmentCode();
+		Thread.sleep(3000);
 		AtlassianObject.commentsCode();
+		Thread.sleep(3000);
 		AtlassianObject.JiraIntegration();
+		Thread.sleep(3000);
 		AtlassianObject.PageVersionHistory();
+		Thread.sleep(3000);
 		newPage();
+		Thread.sleep(3000);
 		AtlassianObject.duplicatepagedescription();
+		Thread.sleep(8000);
 
 	}
 

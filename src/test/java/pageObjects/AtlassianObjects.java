@@ -12,17 +12,17 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 public class AtlassianObjects {
 	public WebDriver driver;
+	
 	public AtlassianObjects(WebDriver driver) {
 		this.driver=driver;
 	}
 
 	By InternalArticles=By.xpath("//a[@title='Internal Articles - Service Desk']");
 	By JiraAssignmentgroup=By.xpath("//div/a[@title='JIRA ENTERPRISE APPLICATION SERVICE DESK'][1]");
-	By JiraConfluence=By.xpath("//a[@title='JIRA ET CONFLUENCE']");
+	By JiraConfluence=By.xpath("//a[@title='JiraET CONFLUENCE']");
 	By Prod_Testing=By.xpath("//a[@title='QA TESTING']");
 	By SandBox_Testing=By.xpath("//a[@title='TESTING']");
 	By plusSign=By.xpath("//*[@id='create-page-button']");
@@ -50,10 +50,26 @@ public class AtlassianObjects {
 	By VersionComment=By.xpath("//input[@id='versionComment']");
 	By  PageHistory=By.xpath("//*[@id='action-view-history-link']");
 	String duplicateTitle="A page with the title 'Testing Edit Page FUnctionality in Confluence_001' already exists in this space. Enter a different title for your page.";
+	By DeleteButton=By.xpath("//*[@id='action-remove-content-link']");
+	By DeleteConfirm=By.xpath("//*[@id='delete-dialog-next']");
+    By Closeit=By.xpath("//*[@id='rte-button-cancel']");
+    
 
-
-
-
+public void Differentiation() {
+	String URLs=driver.getCurrentUrl();
+	if(URLs.contains("sandbox")) {
+	internalArticles();
+	JiraAssignmentGroup();
+	Sandbox_Testing();
+	}
+	else {
+		internalArticles();
+		JiraAssignmentGroup();
+		Jira_Confluence();
+		Prod_Testing();
+		
+	}
+}
 	public void PageUpdates() {
 		driver.findElement(PageTitle).sendKeys("Testing Edit Page Functionality in Confluence");
 		driver.switchTo().frame("wysiwygTextarea_ifr");
@@ -77,7 +93,7 @@ public class AtlassianObjects {
 		rb.keyPress(KeyEvent.VK_ENTER);
 		rb.keyRelease(KeyEvent.VK_ENTER);
 		rb.delay(5000);
-		StringSelection ss= new StringSelection("C:\\Users\\sai.kompella\\OneDrive - Cotiviti\\Desktop\\PRODUCTION OPERATIONS.docx");
+		StringSelection ss= new StringSelection("C:\\Users\\sai.kompella\\OneDrive - Cotiviti\\Desktop\\All Mine\\PRODUCTION OPERATIONS.docx");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 		rb.keyPress(KeyEvent.VK_CONTROL);
 		rb.keyPress(KeyEvent.VK_V);
@@ -109,6 +125,8 @@ public class AtlassianObjects {
 		Thread.sleep(3000); 
 		System.out.println("Comments added Successfully");
 		System.out.println("***********************************************************************");
+		driver.navigate().refresh();
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
 	}
 
 	public void JiraIntegration() throws InterruptedException {
@@ -144,8 +162,19 @@ public void duplicatepagedescription() throws InterruptedException {
 	driver.findElement(PageTitle).sendKeys("Testing Edit Page FUnctionality in Confluence_001");
 	driver.findElement(SavingPage).click();
 	Thread.sleep(3000);
+	driver.findElement(Closeit).click();
+	Thread.sleep(3000);
 	System.out.println("Atlassian Smoke Test is Completed");
-	driver.quit();
+	Thread.sleep(3000);
+	ThreeDotsIcon();
+	Thread.sleep(3000);
+	DeletePage();
+	Thread.sleep(3000);
+	driver.findElement(DeleteConfirm).click();
+	Thread.sleep(3000);
+}
+public void DeletePage() {
+	driver.findElement(DeleteButton).click();
 }
 	public void ThreeDotsIcon() {
 		driver.findElement(ThreeDotsIcon).click();

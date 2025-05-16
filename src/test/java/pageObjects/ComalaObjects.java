@@ -12,7 +12,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class ComalaObjects {
 	public WebDriver driver;
@@ -23,7 +22,7 @@ public class ComalaObjects {
 	
 	By InternalArticles=By.xpath("//a[@title='Internal Articles - Service Desk']");
 	By JiraAssignmentgroup=By.xpath("//div/a[@title='JIRA ENTERPRISE APPLICATION SERVICE DESK'][1]");
-	By JiraConfluence=By.xpath("//a[@title='JIRA ET CONFLUENCE']");
+	By JiraConfluence=By.xpath("//a[@title='JiraET CONFLUENCE']");
 	By Prod_Testing=By.xpath("//a[@title='QA TESTING']");
 	By plusSign=By.xpath("//*[@id='create-page-button']");
 	By HowToArticle=By.xpath("//*[text()='How-to article']");
@@ -63,7 +62,21 @@ public class ComalaObjects {
 	By SandBox_Testing=By.xpath("//a[@title='TESTING']");
 
 
-
+	public void Differentiation() {
+		String URLs=driver.getCurrentUrl();
+		if(URLs.contains("sandbox")) {
+		internalArticles();
+		JiraAssignmentGroup();
+		Sandbox_Testing();
+		}
+		else {
+			internalArticles();
+			JiraAssignmentGroup();
+			Jira_Confluence();
+			Prod_Testing();
+			
+		}
+	}
 	
 
 
@@ -127,7 +140,7 @@ public class ComalaObjects {
 		rb.keyPress(KeyEvent.VK_ENTER);
 		rb.keyRelease(KeyEvent.VK_ENTER);
 		rb.delay(5000);
-		StringSelection ss= new StringSelection("C:\\Users\\sai.kompella\\OneDrive - Cotiviti\\Desktop\\PRODUCTION OPERATIONS.docx");
+		StringSelection ss= new StringSelection("C:\\Users\\sai.kompella\\OneDrive - Cotiviti\\Desktop\\All Mine\\PRODUCTION OPERATIONS.docx");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 		rb.keyPress(KeyEvent.VK_CONTROL);
 		rb.keyPress(KeyEvent.VK_V);
